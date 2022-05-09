@@ -19,10 +19,10 @@
     </xs:element>
 
     <xs:complexType name="CourseDetails">
-        <xs:all>
+        <xs:sequence>
             <xs:element name="id" type="xs:integer"/>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="description" type="xs:string"/>
-        </xs:all>
+        </xs:sequence>
     </xs:complexType>
 </xs:schema>
