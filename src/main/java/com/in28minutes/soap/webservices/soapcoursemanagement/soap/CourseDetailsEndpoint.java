@@ -2,6 +2,7 @@ package com.in28minutes.soap.webservices.soapcoursemanagement.soap;
 
 import com.in28minutes.courses.*;
 import com.in28minutes.soap.webservices.soapcoursemanagement.soap.bean.Course;
+import com.in28minutes.soap.webservices.soapcoursemanagement.soap.exception.CourseNotFoundException;
 import com.in28minutes.soap.webservices.soapcoursemanagement.soap.service.CourseDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
@@ -28,6 +29,11 @@ public class CourseDetailsEndpoint {
     @ResponsePayload
     public GetCourseDetailsResponse processCourseDetailsRequest(@RequestPayload GetCourseDetailsRequest request) {
         Course course = service.findById(request.getId());
+
+        if (course == null) {
+            throw new CourseNotFoundException("Invalid Course Id " + request.getId());
+        }
+
         return mapCourseDetails(course);
     }
 
