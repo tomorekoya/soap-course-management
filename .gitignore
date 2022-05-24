@@ -35,3 +35,5 @@ build/
 ### soap-course-management  ###
 src/main/java/com/in28minutes/courses/
 src/main/java/META-INF/
+*.jks
+
